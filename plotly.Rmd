@@ -1,0 +1,29 @@
+---
+title: "Plotly"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+ 
+```{r}
+data("ny_noaa")
+
+noaa =
+ ny_noaa %>%
+ select(id,date, prcp, snow) %>%
+  filter(
+    id == "US1NYAB0001"
+  ) %>% 
+drop_na(snow, prcp)
+```
+ 
+ 
+ 

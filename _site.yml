@@ -11,6 +11,10 @@ navbar:
       href: http://github.com/jk4443/
     - icon: fa-linkedin fa-lg
       href: https://www.linkedin.com/in/jyoti-kumar-540810191
+    - text: Plotly
+      href: plotly.html
+    - text: dashboard
+      href: dashboard.html 
 output:
   html_document:
     theme: cerulean
