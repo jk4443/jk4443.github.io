@@ -25,5 +25,25 @@ noaa =
 drop_na(snow, prcp)
 ```
  
- 
- 
+
+## Scatter Plot
+
+```{r}
+noaa %>%
+  plot_ly(x = ~ date, y = ~ snow, type = "scatter", mode = "markers", color = ~ prcp, alpha = 0.5, text = ~ id)
+```
+
+## Box Plot
+
+```{r}
+noaa %>%
+  plot_ly(x = ~ snow, y = ~ date, type = "histogram", color = ~ prcp)
+```
+
+## Bar Plot
+
+```{r}
+noaa %>%
+  plot_ly(x = ~ date, y = ~ snow, type = "bar", color = ~ prcp, colors = "viridis")
+```
+
