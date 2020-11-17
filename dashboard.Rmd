@@ -1,0 +1,58 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+## loading data 
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
+library(flexdashboard)
+```
+
+```{r}
+data("ny_noaa")
+
+noaa =
+ ny_noaa %>%
+ select(id,date, prcp, snow) %>%
+  filter(
+    id == "US1NYAB0001"
+  ) %>% 
+drop_na(snow, prcp)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+noaa %>%
+  plot_ly(x = ~ date, y = ~ snow, type = "scatter", mode = "markers", color = ~ prcp, alpha = 0.5, text = ~ id)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+noaa %>%
+  plot_ly(x = ~ snow, y = ~ date, type = "histogram", color = ~ prcp)
+```
+
+### Chart C
+
+```{r}
+noaa %>%
+  plot_ly(x = ~ date, y = ~ snow, type = "bar", color = ~ prcp, colors = "viridis")
+```
+
